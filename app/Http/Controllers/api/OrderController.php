@@ -16,9 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //return user orders
-        $orders = new OrderCollection(auth()->user()->orders);
-        return $orders;
+        //return all ordes who belongs only the the logged in user based on token Id.
+        return new OrderCollection(Order::where('user_id', auth()->user()->id)->latest()->get());
     }
 
     /**
@@ -41,29 +40,5 @@ class OrderController extends Controller
             'order' => $order
         ],200);
 
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -19,7 +19,8 @@ class OrderResource extends JsonResource
             'userName' => $this->user_name,
             'address' => $this->address,
             'products' => $this->products,
-            'price' => $this->price
+            'price' => $this->price,
+            'date' => $this->created_at->format('Y-m-d H:i:s')
         ];
     }
 }
